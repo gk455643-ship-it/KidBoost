@@ -11,8 +11,10 @@
     <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f981.png" />
     
     <title>KidBoost</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN for immediate styling fix -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
@@ -22,13 +24,13 @@
             },
             colors: {
               brand: {
-                50: '#f0f9ff', // Lightest Sky
+                50: '#f0f9ff',
                 100: '#e0f2fe',
                 200: '#bae6fd',
                 300: '#7dd3fc',
                 400: '#38bdf8',
-                500: '#0ea5e9', // Primary Sky Blue
-                600: '#0284c7', // Darker Blue for hover
+                500: '#0ea5e9',
+                600: '#0284c7',
               },
               kid: {
                 blue: '#60a5fa',
@@ -41,69 +43,89 @@
             animation: {
               'bounce-slow': 'bounce 3s infinite',
               'wiggle': 'wiggle 1s ease-in-out infinite',
+              'popIn': 'popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
             },
             keyframes: {
               wiggle: {
                 '0%, 100%': { transform: 'rotate(-3deg)' },
                 '50%': { transform: 'rotate(3deg)' },
+              },
+              popIn: {
+                '0%': { opacity: '0', transform: 'scale(0.5)' },
+                '100%': { opacity: '1', transform: 'scale(1)' }
+              },
+              drawPath: {
+                to: { strokeDashoffset: '0' }
               }
             }
           }
         }
       }
     </script>
-    <style>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .preserve-3d {
+          transform-style: preserve-3d;
+        }
+        .backface-hidden {
+          backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+          transform: rotateY(180deg);
+        }
+        .perspective-1000 {
+          perspective: 1000px;
+        }
+      }
+      
+      /* Global Resets */
       html, body {
         height: 100%;
         width: 100%;
         overflow: hidden;
         overscroll-behavior: none;
-        touch-action: pan-x pan-y; /* Disables pinch-zoom on some browsers */
+        touch-action: pan-x pan-y;
         -webkit-tap-highlight-color: transparent;
-        font-family: 'Fredoka', sans-serif;
       }
       
-      /* Disable text selection for kids to avoid accidental highlighting */
       .no-select {
         user-select: none;
         -webkit-user-select: none;
         -webkit-touch-callout: none;
       }
-      
-      /* Ensure minimum touch target size */
+
       button, [role="button"], a {
-        min-height: 48px;
-        min-width: 48px;
         touch-action: manipulation;
-      }
-      
-      /* Hide scrollbar for clean UI but allow scrolling inside containers */
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-      .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
       }
     </style>
   <script type="importmap">
 {
   "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
     "zustand": "https://esm.sh/zustand@^5.0.9",
-    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2.39.3",
     "zustand/": "https://esm.sh/zustand@^5.0.9/",
-    "canvas-confetti": "https://esm.sh/canvas-confetti@1.9.2",
-    "dexie": "https://esm.sh/dexie@3.2.4"
+    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
+    "canvas-confetti": "https://esm.sh/canvas-confetti@^1.9.4",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@^2.87.2",
+    "dexie": "https://esm.sh/dexie@^4.2.1",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
 </head>
   <body class="bg-brand-50 text-slate-800 no-select">
     <div id="root" class="h-full w-full"></div>
+    <script type="module" src="/index.tsx"></script>
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
