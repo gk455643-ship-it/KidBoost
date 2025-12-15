@@ -13,7 +13,6 @@ interface SortingGameProps {
 export const SortingGame: React.FC<SortingGameProps> = ({ config, onComplete }) => {
   const [currentItem, setCurrentItem] = useState<string>('');
   const [score, setScore] = useState(0);
-  const [total, setTotal] = useState(0);
   const GOAL = 10;
 
   const nextItem = () => {
@@ -40,13 +39,11 @@ export const SortingGame: React.FC<SortingGameProps> = ({ config, onComplete }) 
               onComplete(true);
           } else {
               setScore(s => s + 1);
-              setTotal(t => t + 1);
               nextItem();
           }
       } else {
           playSound('wrong');
           // Shake effect?
-          setTotal(t => t + 1);
       }
   };
 

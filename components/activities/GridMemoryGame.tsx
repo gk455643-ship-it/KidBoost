@@ -14,7 +14,6 @@ export const GridMemoryGame: React.FC<GridMemoryGameProps> = ({ config, onComple
   const styles = useAgeStyling();
   const [cards, setCards] = useState<{id: number, content: string, revealed: boolean, matched: boolean}[]>([]);
   const [flipped, setFlipped] = useState<number[]>([]);
-  const [matches, setMatches] = useState(0);
   
   const [itemPerformance, setItemPerformance] = useState<Record<string, number>>({}); 
 
@@ -56,7 +55,6 @@ export const GridMemoryGame: React.FC<GridMemoryGameProps> = ({ config, onComple
       
       if (match) {
         playSound('correct');
-        setMatches(m => m + 1);
         
         setCards(prev => prev.map(c => 
             (c.id === first || c.id === second) ? { ...c, matched: true, revealed: true } : c

@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Camera, RefreshCw, Send, Check, Loader2 } from 'lucide-react';
+import { Camera, RefreshCw, Check, Loader2 } from 'lucide-react';
 import { uploadPhoto } from '../../lib/supabase';
 import { useStore } from '../../store';
 import { ParentGate } from '../ParentGate';

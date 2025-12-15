@@ -1,22 +1,16 @@
 import { createClient } from '@supabase/supabase-js';
 
 // --- Environment Variable Resolution ---
-// Supports Vite, Next.js, and standard process.env
 const getEnv = (key: string) => {
-    // Check for Vite
     // @ts-ignore
     if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env[`VITE_${key}`]) {
         // @ts-ignore
         return import.meta.env[`VITE_${key}`];
     }
-    
-    // Check for process.env (Node/CRA/Next)
-    // IMPORTANT: Check typeof process first to avoid ReferenceError in pure browsers
     if (typeof process !== 'undefined' && process.env) {
         // @ts-ignore
         return process.env[`NEXT_PUBLIC_${key}`] || process.env[`REACT_APP_${key}`] || process.env[key];
     }
-    
     return '';
 };
 
@@ -32,7 +26,7 @@ export const mockSupabase = {
       console.log(`[MockAuth] OTP sent to ${email} (Use 123456)`);
       return { error: null };
     },
-    verifyOtp: async ({ email, token, type }: { email: string, token: string, type: string }) => {
+    verifyOtp: async ({ email, token, type: _type }: { email: string, token: string, type: string }) => {
       if (token === '123456') {
         const user = {
           id: 'user_123',
@@ -59,14 +53,14 @@ export const mockSupabase = {
     }
   },
   from: (table: string) => ({
-      select: (query: string) => ({
-          eq: (col: string, val: any) => ({
-             gt: (col2: string, val2: any) => Promise.resolve({ data: [], error: null }), // Mock empty updates
+      select: (_query: string) => ({
+          eq: (_col: string, _val: any) => ({
+             gt: (_col2: string, _val2: any) => Promise.resolve({ data: [], error: null }),
              data: [], error: null
           }),
           order: () => Promise.resolve({ data: [], error: null })
       }),
-      upsert: (data: any, config: any) => {
+      upsert: (data: any, _config: any) => {
           console.log(`[MockDB] Upsert to ${table}:`, data);
           return Promise.resolve({ error: null });
       }
@@ -78,7 +72,7 @@ export const mockSupabase = {
               await new Promise(r => setTimeout(r, 1000)); // Simulate delay
               return { data: { path: `mock/${path}` }, error: null };
           },
-          getPublicUrl: (path: string) => {
+          getPublicUrl: (_path: string) => {
               return { data: { publicUrl: 'https://via.placeholder.com/300' } };
           }
       })

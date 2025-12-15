@@ -14,7 +14,7 @@ interface CanvasAbacusProps {
 
 export const CanvasAbacus: React.FC<CanvasAbacusProps> = ({ config, onComplete }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [columns, setColumns] = useState(config.columns || 3); 
+  const [columns] = useState(config.columns || 3); 
   const [values, setValues] = useState<number[]>(new Array(config.columns || 3).fill(0));
   
   const FRAME_PADDING = 20;
@@ -163,26 +163,10 @@ export const CanvasAbacus: React.FC<CanvasAbacusProps> = ({ config, onComplete }
           newVal = heavenActive ? currentVal - 5 : currentVal + 5;
           playSound('click');
       } else {
-          // Determine which bead was clicked based on zones
-          // 4 Earth beads. 
-          // If we click in the "Active Zone" (near beam), deactivate.
-          // If we click in "Inactive Zone" (bottom), activate.
-          
-          // Simplified interaction: Click top half of earth section -> +1, Click bottom half -> -1?
-          // Better: Check distances to specific bead slots.
-          
-          // Let's use relative height in Earth section
           const earthTop = BEAM_Y + 12;
           const earthBottom = height - 30;
-          const earthHeight = earthBottom - earthTop;
           
           if (clickY > earthTop && clickY < earthBottom) {
-               // Find clicked bead index (0 is top-most bead physically)
-               // Simple toggle logic: 
-               // If click is on an active bead (high up), make count = index of that bead
-               // If click is on inactive bead (low down), make count = index + 1
-               
-               // Let's iterate visual positions
                let clickedBead = -1;
                for (let b = 0; b < 4; b++) {
                    let y = (b < earthCount) ? BEAM_Y + 16 + b * BEAD_HEIGHT : height - 35 - (4 - b) * BEAD_HEIGHT;
@@ -194,10 +178,8 @@ export const CanvasAbacus: React.FC<CanvasAbacusProps> = ({ config, onComplete }
 
                if (clickedBead !== -1) {
                     if (clickedBead < earthCount) {
-                        // Clicking active bead: Reduce count to just this bead's index
                         newVal = (heavenActive ? 5 : 0) + clickedBead;
                     } else {
-                        // Clicking inactive bead: Increase count to include this bead
                         newVal = (heavenActive ? 5 : 0) + (clickedBead + 1);
                     }
                     playSound('click');

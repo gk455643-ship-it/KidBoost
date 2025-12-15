@@ -68,7 +68,7 @@ export const ShellGame: React.FC<ShellGameProps> = ({ config, onComplete }) => {
       </h3>
 
       <div className="flex gap-4 md:gap-8">
-          {cups.map((originalIdx, visualIdx) => (
+          {cups.map((originalIdx) => (
               <button 
                 key={originalIdx} 
                 onClick={() => handlePick(originalIdx)}

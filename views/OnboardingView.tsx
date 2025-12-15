@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useStore } from '../store';
-import { AgeBand, ChildProfile } from '../types';
-import { Check, ChevronRight, User, Baby, Activity } from 'lucide-react';
+import { AgeBand } from '../types';
+import { User, Activity } from 'lucide-react';
 import { TeacherAvatar } from '../components/TeacherAvatar';
 
 const AVATARS = ["🦁", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐸", "🐯"];

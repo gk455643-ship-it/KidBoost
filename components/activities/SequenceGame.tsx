@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { playSound } from '../../lib/sounds';
 import { useAgeStyling } from '../../hooks/useAgeStyling';
-import { RefreshCw, RotateCcw, Play, Eye } from 'lucide-react';
+import { RefreshCw, RotateCcw, Eye } from 'lucide-react';
 
 interface SequenceGameProps {
   config: { length: number; items: string[] };

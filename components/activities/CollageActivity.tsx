@@ -34,7 +34,7 @@ export const CollageActivity: React.FC<CollageActivityProps> = ({ config, onComp
       setItems(prev => [...prev, newItem]);
   };
 
-  const handleDragStart = (id: number, e: React.MouseEvent | React.TouchEvent) => {
+  const handleDragStart = (id: number, _e: React.MouseEvent | React.TouchEvent) => {
       setDragId(id);
   };
 

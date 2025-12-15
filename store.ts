@@ -1,11 +1,11 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { AppState, ChildProfile, SessionState, Activity, AgeBand, ItemProgress } from './types';
+import { AppState, ChildProfile, AgeBand, ItemProgress } from './types';
 import { supabase } from './lib/supabase';
 import { MOCK_CHILDREN, TROPHIES } from './constants';
 import { getTodayDateString } from './lib/safety';
 import { generateDailyPlan, calculateSM2, getInitialProgress } from './lib/sm2';
-import { db, saveProgressLocal, processSyncQueue, syncDown, getLocalProgressMap } from './lib/db';
+import { saveProgressLocal, processSyncQueue, syncDown, getLocalProgressMap } from './lib/db';
 
 interface Store extends AppState {
     syncStatus: 'idle' | 'syncing' | 'offline';

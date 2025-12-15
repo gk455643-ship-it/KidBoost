@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { playSound } from '../lib/sounds';
-import { Star, CheckCircle } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 import { TeacherAvatar } from './TeacherAvatar';
 
 interface SessionReflectionProps {
@@ -14,11 +14,9 @@ export const SessionReflection: React.FC<SessionReflectionProps> = ({
     childName, earnedStars, streak, onComplete 
 }) => {
   const [step, setStep] = useState<'mood' | 'likes' | 'summary'>('mood');
-  const [selectedMood, setSelectedMood] = useState<string | null>(null);
   const [likes, setLikes] = useState<string[]>([]);
 
-  const handleMoodSelect = (mood: string) => {
-      setSelectedMood(mood);
+  const handleMoodSelect = (_mood: string) => {
       playSound('pop');
       setTimeout(() => setStep('likes'), 500);
   };

@@ -95,7 +95,7 @@ export const SpeedRaceGame: React.FC<SpeedRaceGameProps> = ({ config, onComplete
   const handleAnswer = (ans: string) => {
       if (feedback || isLocked) return;
 
-      const duration = Date.now() - startTimeRef.current;
+      // const duration = Date.now() - startTimeRef.current;
       // Hesitation logic could be used to adjust difficulty later or log stats.
       // For now, we just enforce accuracy.
 

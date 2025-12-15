@@ -1,5 +1,5 @@
-import { ItemProgress, MasteryLevel, ChildProfile, Activity, ActivityType } from "../types";
-import { ACTIVITY_TEMPLATES, CURRICULUM_ITEMS } from "../constants";
+import { ItemProgress, MasteryLevel, ChildProfile, Activity } from "../types";
+import { ACTIVITY_TEMPLATES } from "../constants";
 
 // --- SM-2 ALGORITHM ---
 
@@ -76,9 +76,10 @@ export const calculateSM2 = (current: ItemProgress, quality: number): ItemProgre
 
 export const generateDailyPlan = (
     child: ChildProfile, 
-    progressMap: Record<string, ItemProgress>
+    _progressMap: Record<string, ItemProgress>
 ): Activity[] => {
-    const today = new Date().toISOString().split('T')[0];
+    // Note: progressMap unused currently, but reserved for adaptive logic
+    
     const plan: Activity[] = [];
     
     // Helper to find key from template object

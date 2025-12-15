@@ -5,7 +5,7 @@ import { useTranslation } from '../lib/i18n';
 import { TeacherAvatar } from '../components/TeacherAvatar';
 import { ParentGate } from '../components/ParentGate';
 import { isBedtime, getTodayDateString } from '../lib/safety';
-import { Play, Lock, Star, Clock, Trophy, Map, Music } from 'lucide-react';
+import { Play, Lock, Star, Clock, Trophy, Map } from 'lucide-react';
 import { playSound } from '../lib/sounds';
 import { TrophyCabinet } from '../components/TrophyCabinet';
 

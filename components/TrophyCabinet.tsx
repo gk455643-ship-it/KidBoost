@@ -2,7 +2,6 @@ import React from 'react';
 import { useStore } from '../store';
 import { TROPHIES } from '../constants';
 import { Lock, X } from 'lucide-react';
-import { playSound } from '../lib/sounds';
 
 interface TrophyCabinetProps {
   onClose: () => void;

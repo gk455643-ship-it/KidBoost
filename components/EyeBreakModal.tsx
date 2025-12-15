@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Eye, Check } from 'lucide-react';
+import { Eye } from 'lucide-react';
 import { playSound } from '../lib/sounds';
 
 interface EyeBreakModalProps {

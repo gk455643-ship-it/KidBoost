@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { playSound } from '../../lib/sounds';
-import { Check } from 'lucide-react';
 
 interface MatrixGameProps {
   config: { gridSize: number; fillCount: number };

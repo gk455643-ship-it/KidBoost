@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { PARENT_PIN } from '../constants';
 import { Lock, Calculator } from 'lucide-react';
 

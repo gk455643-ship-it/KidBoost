@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { playSound } from '../../lib/sounds';
-import { RefreshCw, Check, Timer } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 interface MandalaGameProps {
   config: { segments: number; colors: string[] };

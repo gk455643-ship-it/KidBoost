@@ -1,4 +1,4 @@
-import { Activity, ActivityType, AgeBand, ChildProfile, Trophy } from "./types";
+import { ActivityType, AgeBand, ChildProfile, Trophy } from "./types";
 
 export const PARENT_PIN = "1234"; // Default for demo
 
@@ -43,7 +43,7 @@ export const TROPHIES: Trophy[] = [
         title: 'Night Owl',
         description: 'Practice after 6 PM',
         icon: '🦉',
-        condition: (c) => {
+        condition: (_c) => {
              const now = new Date();
              return now.getHours() >= 18;
         }
@@ -919,6 +919,6 @@ export const ACTIVITY_TEMPLATES = {
 };
 
 // Helper to get random template based on age
-export const getRandomActivity = (age: number) => {
+export const getRandomActivity = (_age: number) => {
     return ACTIVITY_TEMPLATES.FLASH_ANIMALS; 
 };

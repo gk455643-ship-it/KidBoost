@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { playSound } from '../../lib/sounds';
-import { RefreshCw, Timer } from 'lucide-react';
+import { RefreshCw } from 'lucide-react';
 
 interface DotConnectGameProps {
   config: { gridSize: number; pathLength: number };

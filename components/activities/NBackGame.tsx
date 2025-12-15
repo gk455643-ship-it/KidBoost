@@ -9,7 +9,6 @@ interface NBackGameProps {
 export const NBackGame: React.FC<NBackGameProps> = ({ config, onComplete }) => {
   const [history, setHistory] = useState<string[]>([]); 
   const [currentItem, setCurrentItem] = useState<string | null>(null);
-  const [score, setScore] = useState(0);
   const [feedback, setFeedback] = useState<'match' | 'miss' | null>(null);
   const [turn, setTurn] = useState(0);
   
@@ -78,7 +77,6 @@ export const NBackGame: React.FC<NBackGameProps> = ({ config, onComplete }) => {
       if (current === target) {
           playSound('correct');
           setFeedback('match');
-          setScore(s => s + 1);
       } else {
           playSound('wrong');
           setFeedback('miss');

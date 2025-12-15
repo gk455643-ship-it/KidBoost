@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { playSound } from '../../lib/sounds';
 
 interface EyeTrackingGameProps {
   config: { path: 'circle' | 'figure8' | 'zigzag'; speed: number; item?: string };

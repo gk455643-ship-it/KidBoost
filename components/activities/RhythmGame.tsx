@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { playSound } from '../../lib/sounds';
-import { Music, Play } from 'lucide-react';
+import { Music } from 'lucide-react';
 
 interface RhythmGameProps {
   config: { pattern: number[]; tempo: number };

@@ -3,8 +3,7 @@ import { useStore } from '../store';
 import { ChildProfile } from '../types';
 import { analyzeProgress } from '../lib/analytics';
 import { 
-  Settings, Plus, Clock, Flame, Star, Brain, Activity, 
-  Shield, Moon, Trash2, BarChart3, X, Play, Globe, Baby, AlertTriangle,
+  Settings, Plus, Clock, Flame, Star, Brain, Shield, Moon, Trash2, BarChart3, X, Play, Globe, Baby, AlertTriangle,
   Calendar as CalendarIcon, Download, ChevronLeft, ChevronRight
 } from 'lucide-react';
 
