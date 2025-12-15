@@ -1,0 +1,7 @@
+{
+  "name": "KidBoost",
+  "description": "A fully guided, distraction-free learning app for kids aged 2-10 designed to develop creativity, memory, and focus through structured daily sessions.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
